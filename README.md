@@ -17,8 +17,9 @@ condo create -n medibot python-3.10 -y
 
 '''bash
 condo activate medibot
-
+'''
 ### STEP02: Install the environment 
 
 '''bash
 pip install -r requirements.txt
+'''

@@ -1,4 +1,4 @@
-from src.helper import load_pdf_files, text_split, download_hugging_face_embedding
+from src.helper import load_pdf_file, text_split, download_hugging_face_embeddings
 from pinecone.grpc import PineconeGRPC as Pinecone
 from pinecone import ServerlessSpec
 from langchain_pinecone import PineconeVectorStore
@@ -37,3 +37,10 @@ docsearch = PineconeVectorStore.from_documents(
     index_name=index_name,
     embedding=embeddings,
 )
+
+docsearch = PineconeVectorStore.from_existing_index(
+    index_name=index_name,
+    embedding=embeddings
+)
+
+retriever = docsearch.as_retriever(search_type="similarity",search_kwargs={"k":3})
